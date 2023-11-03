@@ -23,7 +23,7 @@ excellent_condition = st.checkbox('only excellent condition')
 
 if excellent_condition:
     filtered_data=df[df.price.isin(actual_range)]
-    filtered_data=filtered_data[df.conditiong=='excellent']
+    filtered_data=filtered_data[df.condition=='excellent']
 else:
     filtered_data=df[df.price.isin(actual_range)]
     
