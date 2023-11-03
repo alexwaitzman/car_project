@@ -34,5 +34,5 @@ fig = px.scatter(filtered_data, x="price", y="condition")
 st.plotly_chart(fig)
 
 st.write('Distribution of vehicle types by model')
-fig2 = px.histogram(filtered_data, x='model', y="type")
+fig2 = px.histogram(filtered_data, x="model", y="type")
 st.plotly_chart(fig2)
