@@ -27,12 +27,13 @@ if excellent_condition:
 else:
     filtered_data=df[df.price.isin(actual_range)]
     
-#scatterplot
+#scatterplot  with a split by price and condition
 st.write('Here are your options with a split by price and condition')
 
 fig = px.scatter(filtered_data, x="price", y="condition")           
 st.plotly_chart(fig)
 
+#hystogram with Distribution of vehicle types by model
 st.write('Distribution of vehicle types by model')
 fig2 = px.histogram(filtered_data, x="model", y="type")
 st.plotly_chart(fig2)
