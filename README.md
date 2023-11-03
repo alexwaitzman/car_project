@@ -9,4 +9,4 @@
 # 4. The scatterplot showing the split by price and condition
 # 5. The histogarm showing the average price by model
 
-# the final version of the app is available at https://car-project-xivg.onrender.com/
+# the final version of the app is available at https://car-project-new.onrender.com/
