@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 #creating a header
-st.header('Reading info on our :purple[dataset] :sunglasses:')
+st.header('Reading info on our dataset :sunglasses')
 #creating a subheader
 st.write("""
 ### Head of data
