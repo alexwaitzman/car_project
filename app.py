@@ -5,14 +5,15 @@ import plotly.express as px
 st.header('Investigation of car advertisement market in US')
 #creating a project description
 st.write('In this app we will investigate dependancy of the car price from a condition and from a model')
+
+#reading the file
+df=pd.read_csv('vehicles_us.csv')
+
 #creating a subheader
 st.write("""
 ### Head of data
 """)
 st.table(df.head())
-
-#reading the file
-df=pd.read_csv('vehicles_us.csv')
 
 #Filling in missing values in the data
 df.isna().sum()
