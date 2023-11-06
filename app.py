@@ -9,6 +9,8 @@ st.write('In this app we will investigate dependancy of the car price from a con
 st.write("""
 ### Head of data
 """)
+st.table(df.head())
+
 #reading the file
 df=pd.read_csv('vehicles_us.csv')
 
@@ -26,8 +28,6 @@ df.duplicated().sum()
 df=df.drop_duplicates()
 #checking for duplicates again
 df.duplicated().sum()
-
-st.table(df.head())
 
 #creating slider for the price range and checkbox for excellent condition
 st.caption('Choose your parameters here')
