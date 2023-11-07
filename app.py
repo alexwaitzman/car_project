@@ -49,7 +49,7 @@ else:
 #scatterplot  with a split by price and condition
 st.write('Here are your options with a split by price and condition')
 
-fig = px.scatter(df, x="price", y="condition")           
+fig = px.scatter(filtered_data, x="price", y="condition")           
 st.plotly_chart(fig)
 
 #Histogram showing the average price by model
