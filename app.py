@@ -30,7 +30,7 @@ df=df.drop_duplicates()
 #checking for duplicates again
 df.duplicated().sum()
 
-#creating slider for the price range and checkbox for excellent condition
+#creating slider for the price range and checkbox for the cars that have less then 10 years since production 
 st.caption('Choose your parameters here')
 price_range = st.slider(
      "What is your price range?",
@@ -38,23 +38,23 @@ price_range = st.slider(
 
 actual_range=list(range(price_range[0],price_range[1]+1))
 
-excellent_condition = st.checkbox('only excellent condition')
+not_old_cars = st.checkbox('Only cars less then 10 years old')
 
-if excellent_condition:
+if not_old_cars:
     filtered_data=df[df.price.isin(actual_range)]
-    filtered_data=filtered_data[df.condition=='excellent']
+    filtered_data=filtered_data[df.model_year>='2010']
 else:
     filtered_data=df[df.price.isin(actual_range)]
     
 #scatterplot  with a split by price and condition
 st.write('Here are your options with a split by price and condition')
 
-fig = px.scatter(filtered_data, x="price", y="condition")           
+fig = px.scatter(filtered_data, title="Split of cars by price anв condition", x="price", y="condition")           
 st.plotly_chart(fig)
 
 #Histogram showing the average price by model
 st.write('Average price by model')
-fig2 = px.histogram(filtered_data, x="model", y="price",histfunc="avg")
+fig2 = px.histogram(filtered_data, title="Average price by model", x="model", y="price",histfunc="avg")
 st.plotly_chart(fig2)
 
 st.header('Conclusion')
