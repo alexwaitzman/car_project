@@ -42,7 +42,7 @@ not_old_cars = st.checkbox('Only cars less then 10 years old')
 
 if not_old_cars:
     filtered_data=df[df.price.isin(actual_range)]
-    df.model_year = df.model_year.astype('Int64').astype(str)
+    df.model_year = df.model_year.astype(str)
     filtered_data=filtered_data[df.model_year>='2010']
 else:
     filtered_data=df[df.price.isin(actual_range)]
