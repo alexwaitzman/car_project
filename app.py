@@ -23,6 +23,10 @@ columns_to_replace = ['model_year','cylinders','odometer','paint_color','is_4wd'
 for column in columns_to_replace:
    df[column] = df[column].fillna('unknown')
 
+#Filling in the NaN values in cylinders with mean using group by model and model_year
+df.fillna(df.groupby(['model','model_year','cylinders'], as_index=False).mean(numeric_only=True))
+
+
 #checking for duplicates
 df.duplicated().sum()
 #droping duplicates
@@ -48,17 +52,28 @@ else:
     filtered_data=df[df.price.isin(actual_range)]
     
 #scatterplot  with a split by price and condition
-st.write('Here are your options with a split by price and condition')
 
-fig = px.scatter(filtered_data, title="Split of cars by price anв condition", x="price", y="condition")           
+fig = px.scatter(filtered_data, title="Split of cars by price and condition", x="price", y="condition")           
 st.plotly_chart(fig)
 
+#Conclusion
+st.write('Conclusion about the depandancy of price from condition:')
+st.write('1) Absolute majority of the cars with new, like new, excellent and good condition have pretty much the same prices')
+st.write('2) The prices for new, like new, excellent and good condition cars are mostly less then 60 000 $')
+st.write('3) The prices for salvage and fair condition cars are mostly less then 20 000 $')
 #Histogram showing the average price by model
-st.write('Average price by model')
+
 fig2 = px.histogram(filtered_data, title="Average price by model", x="model", y="price",histfunc="avg")
 st.plotly_chart(fig2)
 
-st.header('Conclusion')
+st.write('Conclusion about the average prices by the model:')
+st.write('1) The average prices of most of the models are below 10 000 $')
+st.write('2) The most expensive model is Mercedes-bebz Sprinter 2500 with the average price of 34900$')
+
+st.header('Overall Conclusion')
 st.write('We found out that:')
-st.write('1) The prices of the cars with new, excellent, like new and good conditions are mostly before 100K')
-st.write('2) The average prices for most models are below 10 000 $')
+st.write('1) Absolute majority of the cars with new, like new, excellent and good condition have pretty much the same prices')
+st.write('2) The prices for new, like new, excellent and good condition cars are mostly less then 60 000 $')
+st.write('3) The prices for salvage and fair condition cars are mostly less then 20 000 $')
+st.write('4) The average prices of most of the models are below 10 000 $')
+st.write('5) The most expensive model is Mercedes-bebz Sprinter 2500 with the average price of 34900$')
