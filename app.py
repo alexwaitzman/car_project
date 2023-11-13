@@ -29,9 +29,9 @@ df['model_year'] = df['model_year'].astype(float).fillna(df.groupby(['model'])['
 print(df['model_year'])
 
 #Filling in the NaN values in cylinders with mode using group by model and model_year
-df['cilynders'] = pd.to_numeric(df['cilynders'], errors='coerce')
-df['cilynders'] = df['cylinders'].fillna(df.groupby(['model','model_year'])['cylinders'].transform(pd.Series.mode))
-print(df['cilynders'])
+df['cylinders'] = pd.to_numeric(df['cylinders'], errors='coerce')
+df['cylinders'] = df['cylinders'].fillna(df.groupby(['model','model_year'])['cylinders'].transform(pd.Series.mode))
+print(df['cylinders'])
 
 #Filling in the NaN values in odometer with mode using group by model,model_yearбензу and condition
 df['odometer'] = pd.to_numeric(df['odometer'], errors='coerce')
