@@ -18,13 +18,25 @@ st.table(df.head())
 #Filling in missing values in the data
 df.isna().sum()
 
-# looping over column names and replacing missing values with 'unknown'
-columns_to_replace = ['model_year','cylinders','odometer','paint_color','is_4wd']
+# looping over column names and replacing missing values in colums paint_colour and is_4wd with 'unknown'
+columns_to_replace = ['paint_color','is_4wd']
 for column in columns_to_replace:
    df[column] = df[column].fillna('unknown')
+   
+#Filling in the NaN values in model_year with median using group by model and model_year
+df['model_year'] = pd.to_numeric(df['model_year'], errors='coerce')
+df['model_year'] = df['model_year'].astype(float).fillna(df.groupby(['model'])['model_year'].transform('median'))
+print(df['model_year'])
 
-#Filling in the NaN values in cylinders with mean using group by model and model_year
-df.fillna(df.groupby(['model','model_year','cylinders'], as_index=False).mean(numeric_only=True))
+#Filling in the NaN values in cylinders with mode using group by model and model_year
+df['cilynders'] = pd.to_numeric(df['cilynders'], errors='coerce')
+df['cilynders'] = df['cylinders'].fillna(df.groupby(['model','model_year'])['cylinders'].transform(pd.Series.mode))
+print(df['cilynders'])
+
+#Filling in the NaN values in odometer with mode using group by model,model_yearбензу and condition
+df['odometer'] = pd.to_numeric(df['odometer'], errors='coerce')
+df['odometer'] = df['odometer'].fillna(df.groupby(['model','model_year','type','condition'])['odometer'].transform('median'))
+print(df['odometer'])
 
 
 #checking for duplicates
