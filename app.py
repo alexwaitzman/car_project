@@ -78,14 +78,22 @@ st.write('3) The prices for salvage and fair condition cars are mostly less then
 fig2 = px.histogram(filtered_data, title="Average price by model", x="model", y="price",histfunc="avg")
 st.plotly_chart(fig2)
 
+
 st.write('Conclusion about the average prices by the model:')
 st.write('1) The average prices of most of the models are below 10 000 $')
 st.write('2) The most expensive model is Mercedes-benz Sprinter 2500 with the average price of 34900$')
 
+
+
 st.header('Overall Conclusion')
-st.write('We found out that:')
-st.write('1) Absolute majority of the cars with new, like new, excellent and good condition have pretty much the same prices')
-st.write('2) The prices for new, like new, excellent and good condition cars are mostly less then 60 000 $')
-st.write('3) The prices for salvage and fair condition cars are mostly less then 20 000 $')
-st.write('4) The average prices of most of the models are below 10 000 $')
-st.write('5) The most expensive model is Mercedes-benz Sprinter 2500 with the average price of 34900$')
+st.write('We have tested the following three hypotheses:')
+st.write('1) The prices of the cars are strongly dependent on the car condition')
+st.write('2) There majority of cars are in the middle price range ')
+
+st.header('After analyzing the data, we concluded:')
+st.write('1) There is a dependancy of price from condition.') 
+st.write('Although cars with new, like new, excellent and good condition have aproximately the same price range from 1 to 60 000 $.')
+st.write('The prices for salvage and fair condition cars are much lower and mostly less then 20 000 $')
+st.write('So, the first hypotheses is approved.')
+st.write('2) The average prices of most of the models are below 10 000 $. The middle price range is 12132 $. ')
+st.write('So we need to conclude that the second hypotheses is not right and the average car price is lower then the middle price range.')
